@@ -5,10 +5,18 @@
   "scripts": {
     "test": "tape test/**.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wolfy87/tm-challenge"
+  },
   "author": {
     "name": "Oliver Caldwell",
     "url": "http://oli.me.uk/"
   },
+  "bugs": {
+    "url": "https://github.com/Wolfy87/tm-challenge/issues"
+  },
+  "homepage": "https://github.com/Wolfy87/tm-challenge",
   "devDependencies": {
     "gulp": "^3.8.10",
     "tape": "^3.0.3"
