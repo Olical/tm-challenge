@@ -1,0 +1,16 @@
+{
+  "name": "tm-challenge",
+  "version": "0.0.0",
+  "description": "Challenge for Thought Machine",
+  "scripts": {
+    "test": "tape test/**.js"
+  },
+  "author": {
+    "name": "Oliver Caldwell",
+    "url": "http://oli.me.uk/"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "tape": "^3.0.3"
+  }
+}

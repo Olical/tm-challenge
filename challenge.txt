@@ -1,0 +1,59 @@
+===========================================
+
+THOUGHT MACHINE
+
+Frontend Programming Test
+
+===========================================
+
+Requirements:
+
+­ Please complete the following programming exercise. Allow for about 4­6 hours.
+
+­ Please provide the solution using JavaScript,
+
+­ It is strongly recommended that you use a build system such as gulp or grunt,
+
+and package management system such as npm and bower.
+
+­ Please produce production­quality code, providing tests and comments where
+
+necessary.
+
+­ Feel free to use any freely available and / or opensource frameworks and libraries.
+
+­ Provide all source code, ideally in a zip file / github repo so that it can be checked out
+
+and
+
+built / ran with a single command.
+
+­ Provide any additional resources that might be helpful, such as a README file, that
+
+lists any
+
+external requirements for running your application.
+
+===========================================
+
+** EXERCISE **
+
+You have been contracted by a home removals company to develop a web­application to
+
+allow their customers to record the contents of their home.
+
+For each item the application should record: which room it is in, the weight of the item, a
+
+description of the item, and whether the item is fragile or not. The application should show
+
+a summary of the items already recorded, broken down by room, and allow items to be
+
+added, removed and modified.
+
+Finally to ease the moving process the application should be able to generate a manifest
+
+view for the movers. This view should contain three sections: the two heaviest items per
+
+room, the fragile items, and all remaining items. Each entry should have the item's
+
+description, the weight, and the room in which it can be found.
