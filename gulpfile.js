@@ -7,11 +7,19 @@ var paths = {
     build: './build',
     watched: [
         './src/**.js',
-        './index.html'
+        './build/index.html'
     ]
 };
 
 gulp.task('build', function () {
+    return gulp.src(paths.main)
+        .pipe(browserify({
+            debug: true
+        }))
+        .pipe(gulp.dest(paths.build));
+});
+
+gulp.task('build-dist', function () {
     return gulp.src(paths.main)
         .pipe(browserify())
         .pipe(gulp.dest(paths.build));
@@ -19,7 +27,8 @@ gulp.task('build', function () {
 
 gulp.task('connect', ['build'], function () {
     connect.server({
-        livereload: true
+        livereload: true,
+        root: paths.build
     });
 });
 
