@@ -4,6 +4,8 @@ var _ = require('lodash');
 /**
  * Compiles an array into a React DOM structure recursively. All segments of the node array are optional.
  *
+ * The array segments can be in any order apart from the node type, that always needs to be first.
+ *
  * Actually works really well, I'd quite like to open source this with CSS selector parsing in the nodeName.
  *
  * @param {*[]} node Comprised of a string DOM node name, params object and string content or child node(s).
@@ -17,7 +19,7 @@ function compile(node) {
         var nodeName = _.first(node);
         var props = _.rest(node);
 
-        var attrs = _.find(props, _.isPlainObject);
+        var attrs = _.find(props, _.isPlainObject) || {};
         var children = _.find(props, _.isArray);
         var content = children ? compile(children) : _.find(props, _.isString);
 
