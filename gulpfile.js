@@ -2,14 +2,16 @@ var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var uglify = require('gulp-uglify');
+var mocha = require('gulp-mocha');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 
 var paths = {
     main: './src/main.js',
     build: './build',
-    watched: [
-        './src/**.js',
-        './build/index.html'
-    ]
+    sources: './src/**.js',
+    tests: './test/**.js',
+    html: './build/index.html'
 };
 
 gulp.task('build', function () {
@@ -35,12 +37,27 @@ gulp.task('connect', ['build'], function () {
 });
 
 gulp.task('reload', ['build'], function () {
-    gulp.src(paths.watched)
+    gulp.src(paths.sources)
         .pipe(connect.reload());
 });
 
 gulp.task('serve', ['connect'], function () {
-    return gulp.watch(paths.watched, ['reload']);
+    return gulp.watch([paths.html, paths.build], ['reload']);
+});
+
+gulp.task('lint', function () {
+    return gulp.src(paths.sources)
+        .pipe(jshint())
+        .pipe(jshint.reporter(stylish));
+});
+
+gulp.task('test', ['lint'], function () {
+    return gulp.src(paths.tests, {read: false})
+        .pipe(mocha());
+});
+
+gulp.task('test-watch', ['test'], function () {
+    return gulp.watch([paths.sources, paths.tests], ['test']);
 });
 
 gulp.task('default', ['build']);

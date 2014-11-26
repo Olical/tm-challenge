@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Challenge for Thought Machine",
   "scripts": {
-    "test": "tape test/**.js"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/Wolfy87/tm-challenge",
   "devDependencies": {
+    "chai": "^1.10.0",
     "gulp": "^3.8.10",
     "gulp-browserify": "^0.5.0",
     "gulp-connect": "^2.2.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-mocha": "^2.0.0",
     "gulp-uglify": "^1.0.1",
-    "tape": "^3.0.3"
+    "jshint-stylish": "^1.0.0"
   },
   "dependencies": {
     "lodash": "^2.4.1",
