@@ -3,6 +3,7 @@ var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
 var uglify = require('gulp-uglify');
 var mocha = require('gulp-mocha');
+var should = require('should');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 
@@ -53,7 +54,17 @@ gulp.task('lint', function () {
 
 gulp.task('test', ['lint'], function () {
     return gulp.src(paths.tests, {read: false})
-        .pipe(mocha());
+        .pipe(mocha({
+            globals: {
+                should: should
+            }
+        }))
+        .on('error', keepCalmAndCarryOn);
+
+    function keepCalmAndCarryOn(err) {
+        console.error(err);
+        this.emit('end');
+    }
 });
 
 gulp.task('test-watch', ['test'], function () {

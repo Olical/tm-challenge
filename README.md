@@ -1,6 +1,8 @@
 # Thought Machine challenge
 
-Get running instantly with `./run.sh` (as long as you have npm installed). Below are my "workings out" and thoughts as I go along.
+To get started, run `npm install` to fetch all dependencies and `npm start` to spin up the development server. The npm commands proxy through to gulp, if you wish to execute gulp commands directly, you need to have it installed with the `-g` option (`npm install -g gulp`).
+
+You can use `gulp test` or `npm test` to lint and test the source as well as `gulp test-watch` to continually run them as files change. Below are my "workings out" and thoughts as I go along.
 
 ## Key requirements
 
