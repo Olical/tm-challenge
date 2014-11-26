@@ -1,6 +1,6 @@
 # Thought Machine challenge
 
-Get running instantly with `./quickstart.sh` (as long as you have npm installed). Below are my "workings out" and thoughts as I go along.
+Get running instantly with `./run.sh` (as long as you have npm installed). Below are my "workings out" and thoughts as I go along.
 
 ## Key requirements
 
