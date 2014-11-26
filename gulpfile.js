@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var connect = require('gulp-connect');
+var uglify = require('gulp-uglify');
 
 var paths = {
     main: './src/main.js',
@@ -22,6 +23,7 @@ gulp.task('build', function () {
 gulp.task('build-dist', function () {
     return gulp.src(paths.main)
         .pipe(browserify())
+        .pipe(uglify())
         .pipe(gulp.dest(paths.build));
 });
 
