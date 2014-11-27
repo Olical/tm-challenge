@@ -10,8 +10,8 @@ var stylish = require('jshint-stylish');
 var paths = {
     main: './src/main.js',
     build: './build',
-    sources: './src/**.js',
-    tests: './test/**.js',
+    sources: './src/**/*.js',
+    tests: './test/**/*.js',
     html: './build/index.html',
     es5shim: './node_modules/es5-shim'
 };

@@ -37,7 +37,7 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
 ## Reflux structure
 
  * Stores
-  * RoomStore (only need one, will also hold items, breaking up is overkill)
+  * roomStore (only need one store, will also hold items, breaking up is overkill)
  * Actions
   * roomActions
    * addRoom(description)
@@ -45,8 +45,7 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
    * addItem(roomId, description, weight, isFragile)
    * removeItem(itemId)
  * Components
-  * RoomEditor
-   * Room (rooms can be edited, if it doesn't have an ID it will create on write)
-    * Item (items can be edited, if it doesn't have an ID it will create on write, just like rooms)
-  * Manifest
-   * ItemsGroup
+  * dashboard
+   * room (rooms can be edited, if it doesn't have an ID it will create on write)
+    * item (items can be edited, if it doesn't have an ID it will create on write, just like rooms)
+  * manifest

@@ -1,5 +1,5 @@
 var React = require('react');
-var compile = require('./compile');
+var compile = require('./utils/compile');
 
 /**
  * Entry point into the application, will load the root component and mount it onto the DOM.

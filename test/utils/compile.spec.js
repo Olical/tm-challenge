@@ -1,4 +1,4 @@
-var compile = require('../src/compile');
+var compile = require('../../src/utils/compile');
 var React = require('react');
 
 var render = function (tree) {
