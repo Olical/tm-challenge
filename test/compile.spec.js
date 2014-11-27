@@ -1,26 +1,26 @@
 var compile = require('../src/compile');
+var React = require('react');
 
-describe('basic text node', function () {
-    var type = 'p';
-    var content = 'testing';
-    var compiled = compile([type, content]);
+var render = function (tree) {
+    return React.renderToStaticMarkup(compile(tree));
+};
 
-    it('should build the correct type of node with text content', function () {
-        compiled.type.should.equal(type);
-        compiled._store.props.children.should.equal(content);
-    });
-});
+/**
+ * Possible forms...
+ *
+ * ['p', 'text']
+ * ['p', {id: 'f'}, 'text']
+ * ['p', ['text', ['p', 'text'], preCompiled()]]
+ */
 
-describe('nested nodes with unique keys', function () {
-    var tree = ['p', [
-        ['strong', 'BIG', {key:'s'}],
-        ['em', 'SLANTED', {key:'b'}]
-    ]];
-    var compiled = compile(tree);
+describe('content', function () {
+    describe('simple text', function () {
+        it('should handle a type and content', function () {
+            render(['p', 'text']).should.equal('<p>text</p>');
+        });
 
-    it('should contain both children of the correct types', function () {
-        var children = compiled._store.props.children;
-        children[0].type.should.equal(tree[1][0][0]);
-        children[1].type.should.equal(tree[1][1][0]);
+        it('should handle a type and nested content', function () {
+            render(['p', ['text']]).should.equal('<p>text</p>');
+        });
     });
 });
