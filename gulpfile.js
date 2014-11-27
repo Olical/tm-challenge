@@ -12,7 +12,8 @@ var paths = {
     build: './build',
     sources: './src/**.js',
     tests: './test/**.js',
-    html: './build/index.html'
+    html: './build/index.html',
+    es5shim: './node_modules/es5-shim'
 };
 
 gulp.task('build', function () {
@@ -33,7 +34,7 @@ gulp.task('build-dist', function () {
 gulp.task('connect', ['build'], function () {
     connect.server({
         livereload: true,
-        root: paths.build
+        root: [paths.build, paths.es5shim]
     });
 });
 

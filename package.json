@@ -29,6 +29,7 @@
     "should": "^4.3.0"
   },
   "dependencies": {
+    "es5-shim": "^4.0.3",
     "lodash": "^2.4.1",
     "react": "^0.12.1",
     "reflux": "^0.2.0"
