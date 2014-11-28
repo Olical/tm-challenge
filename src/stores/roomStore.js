@@ -15,7 +15,7 @@ var roomStore = Reflux.createStore({
      *
      * @param {Object[]} rooms Collection of room objects.
      */
-    setRooms: function (rooms) {
+    set: function (rooms) {
         this.rooms = rooms;
         this.trigger(rooms);
     },
@@ -24,7 +24,7 @@ var roomStore = Reflux.createStore({
      * Wipes the current storage.
      */
     clear: function () {
-        this.setRooms([]);
+        this.set([]);
     },
 
     /**
@@ -44,12 +44,12 @@ var roomStore = Reflux.createStore({
      *
      * @param {String} description
      */
-    onAddRoom: function (description) {
+    addRoom: function (description) {
         var room = {
             description: description,
             id: _.uniqueId('room_')
         };
-        this.setRooms(_.union(this.rooms, [room]));
+        this.set(_.union(this.rooms, [room]));
     },
 
     /**
@@ -58,10 +58,10 @@ var roomStore = Reflux.createStore({
      * @param {String} roomId
      * @param {String} description
      */
-    onUpdateRoom: function (roomId, description) {
+    updateRoom: function (roomId, description) {
         var room = this.getRoom(roomId);
         room.description = description;
-        this.setRooms(this.rooms);
+        this.set(this.rooms);
     },
 
     /**
@@ -69,8 +69,8 @@ var roomStore = Reflux.createStore({
      *
      * @param {String} roomId
      */
-    onRemoveRoom: function (roomId) {
-        this.setRooms(_.filter(this.rooms, function (room) {
+    removeRoom: function (roomId) {
+        this.set(_.filter(this.rooms, function (room) {
             return room.id !== roomId;
         }));
     },
@@ -83,7 +83,7 @@ var roomStore = Reflux.createStore({
      * @param {String} weight
      * @param {Boolean} isFragile
      */
-    onAddItem: _.noop,
+    addItem: _.noop,
 
     /**
      * Update an item.
@@ -94,14 +94,14 @@ var roomStore = Reflux.createStore({
      * @param {String} weight
      * @param {Boolean} isFragile
      */
-    onUpdateItem: _.noop,
+    updateItem: _.noop,
 
     /**
      * Removes an item by id.
      *
      * @param {String} itemId
      */
-    onRemoveItem: _.noop
+    removeItem: _.noop
 });
 
 module.exports = roomStore;

@@ -2,11 +2,11 @@ var roomStore = require('../../src/stores/roomStore');
 var Reflux = require('reflux');
 
 describe('roomStore', function () {
-    describe('onAddRoom', function () {
+    describe('addRoom', function () {
         var description = 'room description';
 
         beforeEach(function () {
-            roomStore.onAddRoom(description);
+            roomStore.addRoom(description);
         });
 
         afterEach(function () {
@@ -21,22 +21,22 @@ describe('roomStore', function () {
             roomStore.should.have.propertyByPath('rooms', 0, 'id').and.match(/room_\d+/);
         });
 
-        describe('onUpdateRoom', function () {
+        describe('updateRoom', function () {
             var room;
 
             beforeEach(function () {
                 room = roomStore.rooms[0];
-                roomStore.onUpdateRoom(room.id, description.toUpperCase());
+                roomStore.updateRoom(room.id, description.toUpperCase());
             });
 
             it('should have updated the room description', function () {
                 roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description.toUpperCase());
             });
 
-            describe('onRemoveRoom', function () {
+            describe('removeRoom', function () {
                 it('should remove the room', function () {
                     roomStore.getRoom(room.id).should.be.type('object');
-                    roomStore.onRemoveRoom(room.id);
+                    roomStore.removeRoom(room.id);
                     (typeof roomStore.getRoom(room.id)).should.equal('undefined');
                 });
             });
