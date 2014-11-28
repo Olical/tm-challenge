@@ -48,6 +48,9 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
      * removeItem(itemId)
  * Components
    * dashboard
-     * room (rooms can be updated, if it doesn't have an ID it will create on write)
-       * item (items can be updated, if it doesn't have an ID it will create on write, just like rooms)
+     * roomGroup (as pointed out below, this is a helper used by dashboard and manifest to abstract the list)
+       * room (rooms can be updated, if it doesn't have an ID it will create on write)
+         * item (items can be updated, if it doesn't have an ID it will create on write, just like rooms)
    * manifest
+
+Room and item components should have an `isEditable` flag that is set to true in the dashboard, but false by default for the manifest. It's essentially a version of the dashboard with groupings and read only components. May need a room group too which is used by the manifest to render stuff as as well as the dashboard. Yeah, need a room group abstraction.
