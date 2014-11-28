@@ -23,7 +23,7 @@ function buildItemList(items) {
 var Room = React.createClass({
     render: function () {
         var tree = ['div', [
-            ['h2', this.props.description, {key: 'description'}],
+            ['h3', this.props.description, {key: 'description'}],
             ['ul', buildItemList(this.props.items), {key: 'item'}]
         ], {
             key: this.props.id
