@@ -1,12 +1,17 @@
 var roomStore = require('../../src/stores/roomStore');
-var roomActions = require('../../src/actions/roomActions');
 var Reflux = require('reflux');
 
 describe('roomStore', function () {
-    describe('when addRoom is dispatched', function () {
+    describe('onAddRoom', function () {
         var description = 'room description';
-        roomStore.rooms = []; // TODO
-        roomActions.addRoom(description); // TODO cleanup too
+
+        beforeEach(function () {
+            roomStore.onAddRoom(description);
+        });
+
+        afterEach(function () {
+            roomStore.clear();
+        });
 
         it('should add the room to the data structure with the description', function () {
             roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description);
@@ -14,6 +19,17 @@ describe('roomStore', function () {
 
         it('should be assigned a unique ID', function () {
             roomStore.should.have.propertyByPath('rooms', 0, 'id').and.match(/room_\d+/);
+        });
+
+        describe('onUpdateRoom', function () {
+            beforeEach(function () {
+                var room = roomStore.rooms[0];
+                roomStore.onUpdateRoom(room.id, description.toUpperCase());
+            });
+
+            it('should have updated the room description', function () {
+                roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description.toUpperCase());
+            });
         });
     });
 });
