@@ -9,7 +9,7 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
  * List of items
   * Each item has a room, weight, description and if it's fragile or not
   * Show items broken down by room
-  * Allow add, edit and remove of items
+  * Allow add, update and remove of items
  * Manifest view
   * Sections
    1. Two heaviest per room
@@ -41,11 +41,13 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
  * Actions
   * roomActions
    * addRoom(description)
+   * updateRoom(roomId, description)
    * removeRoom(roomId)
    * addItem(roomId, description, weight, isFragile)
+   * updateItem(itemId, roomId, description, weight, isFragile)
    * removeItem(itemId)
  * Components
   * dashboard
-   * room (rooms can be edited, if it doesn't have an ID it will create on write)
-    * item (items can be edited, if it doesn't have an ID it will create on write, just like rooms)
+   * room (rooms can be updated, if it doesn't have an ID it will create on write)
+    * item (items can be updated, if it doesn't have an ID it will create on write, just like rooms)
   * manifest

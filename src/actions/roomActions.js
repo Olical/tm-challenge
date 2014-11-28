@@ -7,8 +7,10 @@ var Reflux = require('reflux');
  */
 var requiredActions = [
     'addRoom',
+    'updateRoom',
     'removeRoom',
     'addItem',
+    'updateItem',
     'removeItem'
 ];
 
