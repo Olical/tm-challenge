@@ -69,7 +69,11 @@ var roomStore = Reflux.createStore({
      *
      * @param {String} roomId
      */
-    onRemoveRoom: _.noop,
+    onRemoveRoom: function (roomId) {
+        this.setRooms(_.filter(this.rooms, function (room) {
+            return room.id !== roomId;
+        }));
+    },
 
     /**
      * Creates a new item against a room.

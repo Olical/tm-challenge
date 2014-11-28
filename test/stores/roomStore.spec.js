@@ -22,13 +22,23 @@ describe('roomStore', function () {
         });
 
         describe('onUpdateRoom', function () {
+            var room;
+
             beforeEach(function () {
-                var room = roomStore.rooms[0];
+                room = roomStore.rooms[0];
                 roomStore.onUpdateRoom(room.id, description.toUpperCase());
             });
 
             it('should have updated the room description', function () {
                 roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description.toUpperCase());
+            });
+
+            describe('onRemoveRoom', function () {
+                it('should remove the room', function () {
+                    roomStore.getRoom(room.id).should.be.type('object');
+                    roomStore.onRemoveRoom(room.id);
+                    (typeof roomStore.getRoom(room.id)).should.equal('undefined');
+                });
             });
         });
     });
