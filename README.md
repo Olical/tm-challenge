@@ -7,15 +7,15 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
 ## Key requirements
 
  * List of items
-  * Each item has a room, weight, description and if it's fragile or not
-  * Show items broken down by room
-  * Allow add, update and remove of items
+   * Each item has a room, weight, description and if it's fragile or not
+   * Show items broken down by room
+   * Allow add, update and remove of items
  * Manifest view
-  * Sections
-   1. Two heaviest per room
-   2. Fragile items
-   3. All remaining items
-  * Should each show description, weight and room
+   * Sections
+     1. Two heaviest per room
+     2. Fragile items
+     3. All remaining items
+   * Should each show description, weight and room
 
 ## Tooling
 
@@ -37,17 +37,17 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
 ## Reflux structure
 
  * Stores
-  * roomStore (only need one store, will also hold items, breaking up is overkill)
+   * roomStore (only need one store, will also hold items, breaking up is overkill)
  * Actions
-  * roomActions
-   * addRoom(description)
-   * updateRoom(roomId, description)
-   * removeRoom(roomId)
-   * addItem(roomId, description, weight, isFragile)
-   * updateItem(itemId, roomId, description, weight, isFragile)
-   * removeItem(itemId)
+   * roomActions
+     * addRoom(description)
+     * updateRoom(roomId, description)
+     * removeRoom(roomId)
+     * addItem(roomId, description, weight, isFragile)
+     * updateItem(itemId, roomId, description, weight, isFragile)
+     * removeItem(itemId)
  * Components
-  * dashboard
-   * room (rooms can be updated, if it doesn't have an ID it will create on write)
-    * item (items can be updated, if it doesn't have an ID it will create on write, just like rooms)
-  * manifest
+   * dashboard
+     * room (rooms can be updated, if it doesn't have an ID it will create on write)
+       * item (items can be updated, if it doesn't have an ID it will create on write, just like rooms)
+   * manifest
