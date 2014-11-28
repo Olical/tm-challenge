@@ -40,6 +40,20 @@ var roomStore = Reflux.createStore({
     },
 
     /**
+     * Fetches an item by room and item id.
+     *
+     * @param {String} roomId
+     * @param {String} itemId
+     * @return {Object}
+     */
+    getItem: function (roomId, itemId) {
+        var room = this.getRoom(roomId);
+        return _.find(room.items, function (item) {
+            return item.id === itemId;
+        });
+    },
+
+    /**
      * Creates a new room with a description.
      *
      * @param {String} description
@@ -49,6 +63,7 @@ var roomStore = Reflux.createStore({
             description: description,
             id: _.uniqueId('room_')
         };
+
         this.set(_.union(this.rooms, [room]));
     },
 
@@ -83,25 +98,53 @@ var roomStore = Reflux.createStore({
      * @param {String} weight
      * @param {Boolean} isFragile
      */
-    addItem: _.noop,
+    addItem: function (roomId, description, weight, isFragile) {
+        var room = this.getRoom(roomId);
+        var item = {
+            description: description,
+            weight: weight,
+            isFragile: isFragile,
+            id: _.uniqueId('item_')
+        };
+
+        room.items = _.union(room.items, [item]);
+        this.set(this.rooms);
+    },
 
     /**
      * Update an item.
      *
-     * @param {String} itemId
      * @param {String} roomId
+     * @param {String} itemId
      * @param {String} description
      * @param {String} weight
      * @param {Boolean} isFragile
      */
-    updateItem: _.noop,
+    updateItem: function (roomId, itemId, description, weight, isFragile) {
+        var item = this.getItem(roomId, itemId);
+        _.assign(item, {
+            description: description,
+            weight: weight,
+            isFragile: isFragile
+        });
+
+        this.set(this.rooms);
+    },
 
     /**
-     * Removes an item by id.
+     * Removes an item by room and item id.
      *
+     * @param {String} roomId
      * @param {String} itemId
      */
-    removeItem: _.noop
+    removeItem: function (roomId, itemId) {
+        var room = this.getRoom(roomId);
+        room.items = _.filter(room.items, function (item) {
+            return item.id !== itemId;
+        });
+
+        this.set(this.rooms);
+    }
 });
 
 module.exports = roomStore;

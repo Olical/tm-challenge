@@ -52,6 +52,39 @@ describe('roomStore', function () {
                 room = roomStore.rooms[0];
                 roomStore.addItem(room.id, description, weight, isFragile);
             });
+
+            it('should have added an item to the room', function () {
+                room.should.have.propertyByPath('items', 0).and.have.properties({
+                    description: description,
+                    weight: weight,
+                    isFragile: isFragile
+                }).and.have.property('id').and.match(/item_\d+/);
+            });
+
+            describe('updateItem', function () {
+                var item;
+
+                beforeEach(function () {
+                    item = room.items[0];
+                    roomStore.updateItem(room.id, item.id, description.toUpperCase(), weight.toUpperCase(), !isFragile);
+                });
+
+                it('should have updated the item', function () {
+                    roomStore.should.have.propertyByPath('rooms', 0, 'items', 0).and.have.properties({
+                        description: description.toUpperCase(),
+                        weight: weight.toUpperCase(),
+                        isFragile: !isFragile
+                    });
+                });
+
+                describe('removeItem', function () {
+                    it('should remove the item', function () {
+                        roomStore.getItem(room.id, item.id).should.be.type('object');
+                        roomStore.removeItem(room.id, item.id);
+                        (typeof roomStore.getItem(room.id, item.id)).should.equal('undefined');
+                    });
+                });
+            });
         });
     });
 });
