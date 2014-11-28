@@ -44,7 +44,7 @@ gulp.task('reload', ['build'], function () {
 });
 
 gulp.task('serve', ['connect'], function () {
-    return gulp.watch([paths.html, paths.build], ['reload']);
+    return gulp.watch([paths.html, paths.sources], ['reload']);
 });
 
 gulp.task('lint', function () {
