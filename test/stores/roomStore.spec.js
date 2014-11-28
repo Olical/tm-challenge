@@ -41,5 +41,17 @@ describe('roomStore', function () {
                 });
             });
         });
+
+        describe('addItem', function () {
+            var description = 'a mysterious ring that you feel should be thrown into a volcano';
+            var weight = '0.05kg';
+            var isFragile = false; // Probably requires a volcano.
+            var room;
+
+            beforeEach(function () {
+                room = roomStore.rooms[0];
+                roomStore.addItem(room.id, description, weight, isFragile);
+            });
+        });
     });
 });
