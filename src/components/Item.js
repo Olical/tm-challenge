@@ -65,14 +65,12 @@ var Item = React.createClass({
             this.buildEditableProp('Weight', this.state.weight, this.onWeightChange),
             this.buildEditableProp('Fragile?', this.state.isFragile || false, this.onFragileChange),
             ['li', {key: 'manager'}, [
-                ['a', 'Save', {
+                ['button', 'Save', {
                     key: 'save',
-                    href: '#',
                     onClick: this.update
                 }],
-                ['a', 'Cancel', {
+                ['button', 'Cancel', {
                     key: 'cancel',
-                    href: '#',
                     onClick: this.cancelEdit
                 }]
             ]]
@@ -89,14 +87,12 @@ var Item = React.createClass({
 
         if (this.props.isEditable) {
             view = _.union(view, [
-                ['a', 'Edit', {
+                ['button', 'Edit', {
                     key: 'edit',
-                    href: '#',
                     onClick: this.edit
                 }],
-                ['a', 'Remove', {
+                ['button', 'Remove', {
                     key: 'remove',
-                    href: '#',
                     onClick: this.remove
                 }]
             ]);

@@ -31,14 +31,12 @@ var Dashboard = React.createClass({
     render: function () {
         var tree = ['div', [
             ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}],
-            ['a', 'Add new room', {
+            ['button', 'Add new room', {
                 key: 'addRoom',
-                href: '#',
                 onClick: roomActions.addRoom
             }],
-            ['a', 'Clear all', {
+            ['button', 'Clear all', {
                 key: 'clear',
-                href: '#',
                 onClick: roomActions.clear
             }]
         ]];

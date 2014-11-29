@@ -33,14 +33,12 @@ var Room = React.createClass({
 
         if (this.props.isEditable) {
             view.push(
-                ['a', 'Edit', {
+                ['button', 'Edit', {
                     key: 'edit',
-                    href: '#',
                     onClick: this.edit
                 }],
-                ['a', 'Remove', {
+                ['button', 'Remove', {
                     key: 'remove',
-                    href: '#',
                     onClick: this.remove
                 }]
             );
@@ -57,14 +55,12 @@ var Room = React.createClass({
                 value: this.state.description,
                 onChange: this.onDescriptionChange
             }],
-            ['a', 'Save', {
+            ['button', 'Save', {
                 key: 'update',
-                href: '#',
                 onClick: this.update
             }],
-            ['a', 'Cancel', {
+            ['button', 'Cancel', {
                 key: 'remove',
-                href: '#',
                 onClick: this.cancelEdit
             }],
             this.buildItems()
@@ -78,9 +74,8 @@ var Room = React.createClass({
         ];
 
         if (this.props.isEditable) {
-            items.push(['a', 'Add item', {
+            items.push(['button', 'Add item', {
                 key: 'addItem',
-                href: '#',
                 onClick: roomActions.addItem.bind(null, this.props.id)
             }]);
         }
