@@ -57,6 +57,5 @@ Room and item components should have an `isEditable` flag that is set to true in
 ## To do
 
  * Manifest view
- * Navigation links
  * Add CSS so it doesn't cause my eyes to explode
  * Find a way to test components that isn't dumb
