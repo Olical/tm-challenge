@@ -1,14 +1,25 @@
 var React = require('react');
-var Dashboard = React.createFactory(require('./components/Dashboard'));
+var Router = require('react-router');
+var Route = React.createFactory(Router.Route);
+var Dashboard = require('./components/Dashboard');
+var compile = require('./utils/compile');
 
-var roomActions = require('./actions/roomActions');
+var container = document.getElementById('main');
+
+var routes = compile(Route({
+    name: 'dashboard',
+    path: '/',
+    handler: Dashboard
+}));
 
 /**
  * Entry point into the application, will load the root component and mount it onto the DOM.
  */
 function main() {
-    var container = document.getElementById('main');
-    React.render(Dashboard(), container);
+    Router.run(routes, function (Handler) {
+        var handler = React.createFactory(Handler);
+        React.render(handler(), container);
+    });
 }
 
 // GO!
