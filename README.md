@@ -57,9 +57,5 @@ Room and item components should have an `isEditable` flag that is set to true in
 ## To do
 
  * Manifest view
- * Item editor
- * Add item button
  * Find a way to test components that isn't dumb
  * Can only save if all fields are filled
-
-I think I can send a "begin edit" action that changes the main state. This state change will cause an editor to be rendered in place of things that are being edited. When done it performs an update and knocks it out of edit mode. The "add new" buttons can just create a new item and drop it into edit mode.
