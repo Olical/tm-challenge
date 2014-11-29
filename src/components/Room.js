@@ -11,8 +11,12 @@ var Item = React.createFactory(require('./Item'));
  * @return {*[]}
  */
 function buildItemList(items) {
+    var editable = {
+        isEditable: true
+    };
+
     return _.map(items, function (item) {
-        return ['li', Item(item), {key: item.id}];
+        return ['li', Item(_.assign({}, editable, item)), {key: item.id}];
     });
 }
 
@@ -69,7 +73,19 @@ var Room = React.createClass({
         return edit;
     },
     buildItems: function () {
-        return ['ul', buildItemList(this.props.items), {key: 'items'}];
+        var items = [
+            ['ul', buildItemList(this.props.items), {key: 'items'}]
+        ];
+
+        if (this.props.isEditable) {
+            items.push(['a', 'Add item', {
+                key: 'addItem',
+                href: '#',
+                onClick: roomActions.addItem.bind(null, this.props.id)
+            }]);
+        }
+
+        return ['div', {key: 'items'}, items];
     },
     render: function () {
         var tree = ['div',
