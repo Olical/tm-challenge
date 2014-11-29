@@ -28,6 +28,15 @@ var roomStore = Reflux.createStore({
     },
 
     /**
+     * Returns the default data set for use in classes when listening to the store.
+     *
+     * @return {Object[]}
+     */
+    getInitialState: function () {
+        return [];
+    },
+
+    /**
      * Fetches a room by id.
      *
      * @param {String} roomId

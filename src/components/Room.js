@@ -25,9 +25,7 @@ var Room = React.createClass({
         var tree = ['div', [
             ['h3', this.props.description, {key: 'description'}],
             ['ul', buildItemList(this.props.items), {key: 'item'}]
-        ], {
-            key: this.props.id
-        }];
+        ]];
 
         return compile(tree);
     }

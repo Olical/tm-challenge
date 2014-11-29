@@ -35,9 +35,7 @@ var Item = React.createClass({
             prop('Description', this.props.description),
             prop('Weight', this.props.weight),
             prop('Fragile', humanBoolean(this.props.isFragile))
-        ], {
-            key: this.props.id
-        }];
+        ]];
 
         return compile(tree);
     }

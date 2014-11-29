@@ -1,23 +1,14 @@
 var React = require('react');
-var Room = React.createFactory(require('./components/Room'));
+var Dashboard = React.createFactory(require('./components/Dashboard'));
+
+var roomActions = require('./actions/roomActions');
 
 /**
  * Entry point into the application, will load the root component and mount it onto the DOM.
  */
 function main() {
     var container = document.getElementById('main');
-    React.render(Room({
-        description: 'SOME ROOM',
-        id: 'rooooom',
-        items: [
-            {
-                description: 'desc',
-                weight: '10kg',
-                isFragile: true,
-                id: 'foo'
-            }
-        ]
-    }), container);
+    React.render(Dashboard(), container);
 }
 
 // GO!
