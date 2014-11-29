@@ -56,12 +56,8 @@ Room and item components should have an `isEditable` flag that is set to true in
 
 ## To do
 
- * Persist values
- * Add clear all button, maybe even with prompt if I'm feeling fancy
  * Manifest view
- * Room editor
  * Item editor
- * Add room button
  * Add item button
  * Find a way to test components that isn't dumb
 

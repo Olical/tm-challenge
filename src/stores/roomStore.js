@@ -1,6 +1,47 @@
 var _ = require('lodash');
 var Reflux = require('reflux');
 var roomActions = require('../actions/roomActions');
+var persistence = require('../utils/persistence');
+
+/**
+ * This is what the rooms are persisted in localStorage against.
+ *
+ * @type {String}
+ */
+var persistenceKey = 'rooms';
+
+/**
+ * Prefix strings to be used with _.uniqueId.
+ *
+ * @type {Object}
+ */
+var idPrefix = {
+    room: 'room_',
+    item: 'item_'
+};
+
+/**
+ * This will rebuild the id attributes for all rooms and items within the given array.
+ * This has to be performed on values loaded from localStorage due to lodash's uniqueId
+ * internal counter being reset and causing conflicts in ids. They're not very unique.
+ *
+ * @param {Object[]}
+ * @return {Object[]}
+ */
+function generateUniqueIds(rooms) {
+    return _.map(rooms, function (room) {
+        room.id = _.uniqueId(idPrefix.room);
+
+        if (room.items) {
+            room.items = _.map(room.items, function (item) {
+                item.id = _.uniqueId(idPrefix.item);
+                item.roomId = room.id;
+                return item;
+            });
+        }
+        return room;
+    });
+}
 
 /**
  * Essentially the model for the entire application. Controlled through roomActions.
@@ -11,11 +52,12 @@ var roomStore = Reflux.createStore({
     listenables: roomActions,
 
     /**
-     * Sets the new rooms array and triggers an update.
+     * Sets the new rooms array and triggers an update. Will also update localStorage.
      *
      * @param {Object[]} rooms Collection of room objects.
      */
     set: function (rooms) {
+        persistence.write(persistenceKey, rooms);
         this.rooms = rooms;
         this.trigger(rooms);
     },
@@ -33,7 +75,17 @@ var roomStore = Reflux.createStore({
      * @return {Object[]}
      */
     getInitialState: function () {
-        return [];
+        var persisted = persistence.read(persistenceKey);
+
+        if (_.isArray(persisted)) {
+            this.rooms = generateUniqueIds(persisted);
+        }
+        else {
+            this.rooms = [];
+        }
+
+        this.set(this.rooms);
+        return this.rooms;
     },
 
     /**
@@ -67,9 +119,7 @@ var roomStore = Reflux.createStore({
      */
     addRoom: function () {
         var room = {
-            isEditing: true,
-            isEditable: true,
-            id: _.uniqueId('room_')
+            id: _.uniqueId(idPrefix.room)
         };
 
         this.set(_.union(this.rooms, [room]));
@@ -106,9 +156,7 @@ var roomStore = Reflux.createStore({
     addItem: function (roomId) {
         var room = this.getRoom(roomId);
         var item = {
-            isEditing: true,
-            isEditable: true,
-            id: _.uniqueId('item_'),
+            id: _.uniqueId(idPrefix.item),
             roomId: room.id
         };
 

@@ -11,7 +11,8 @@ var requiredActions = [
     'removeRoom',
     'addItem',
     'updateItem',
-    'removeItem'
+    'removeItem',
+    'clear'
 ];
 
 var roomActions = Reflux.createActions(requiredActions);

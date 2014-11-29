@@ -10,8 +10,12 @@ var Room = React.createFactory(require('./Room'));
  * Constructs the list of rooms to display.
  */
 function buildRoomList(rooms) {
+    var editable = {
+        isEditable: true
+    };
+
     return _.map(rooms, function (room) {
-        return ['li', Room(room), {key: room.id}];
+        return ['li', Room(_.assign({}, editable, room)), {key: room.id}];
     });
 }
 
@@ -27,7 +31,16 @@ var Dashboard = React.createClass({
     render: function () {
         var tree = ['div', [
             ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}],
-            ['a', 'Add new room', {key: 'addRoom', href: '#', onClick: roomActions.addRoom}]
+            ['a', 'Add new room', {
+                key: 'addRoom',
+                href: '#',
+                onClick: roomActions.addRoom
+            }],
+            ['a', 'Clear all', {
+                key: 'clear',
+                href: '#',
+                onClick: roomActions.clear
+            }]
         ]];
         return compile(tree);
     }

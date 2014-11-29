@@ -81,7 +81,7 @@ var Room = React.createClass({
     getInitialState: function () {
         return {
             description: this.props.description,
-            isEditing: this.props.isEditing
+            isEditing: !this.props.description && this.props.isEditable
         };
     },
     onDescriptionChange: function (event) {

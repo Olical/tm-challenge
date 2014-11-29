@@ -8,7 +8,8 @@ describe('roomActions', function () {
             'removeRoom',
             'addItem',
             'updateItem',
-            'removeItem'
+            'removeItem',
+            'clear'
         ];
 
         roomActions.should.have.keys(requiredProperties);
