@@ -58,4 +58,3 @@ Room and item components should have an `isEditable` flag that is set to true in
 
  * Manifest view
  * Find a way to test components that isn't dumb
- * Can only save if all fields are filled

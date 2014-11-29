@@ -106,10 +106,12 @@ var Room = React.createClass({
         });
     },
     update: function () {
-        roomActions.updateRoom(this.props.id, this.state.description);
-        this.setState({
-            isEditing: false
-        });
+        if (this.state.description) {
+            roomActions.updateRoom(this.props.id, this.state.description);
+            this.setState({
+                isEditing: false
+            });
+        }
     },
     edit: function () {
         this.setState({

@@ -116,16 +116,18 @@ var Item = React.createClass({
         };
     },
     update: function () {
-        roomActions.updateItem(
-            this.props.roomId,
-            this.props.id,
-            this.state.description,
-            this.state.weight,
-            this.state.isFragile
-        );
-        this.setState({
-            isEditing: false
-        });
+        if (this.state.description && this.state.weight) {
+            roomActions.updateItem(
+                this.props.roomId,
+                this.props.id,
+                this.state.description,
+                this.state.weight,
+                this.state.isFragile
+            );
+            this.setState({
+                isEditing: false
+            });
+        }
     },
     edit: function () {
         this.setState({
