@@ -53,3 +53,16 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
    * manifest
 
 Room and item components should have an `isEditable` flag that is set to true in the dashboard, but false by default for the manifest. It's essentially a version of the dashboard with groupings and read only components.
+
+## To do
+
+ * Persist values
+ * Add clear all button, maybe even with prompt if I'm feeling fancy
+ * Manifest view
+ * Room editor
+ * Item editor
+ * Add room button
+ * Add item button
+ * Find a way to test components that isn't dumb
+
+I think I can send a "begin edit" action that changes the main state. This state change will cause an editor to be rendered in place of things that are being edited. When done it performs an update and knocks it out of edit mode. The "add new" buttons can just create a new item and drop it into edit mode.
