@@ -68,6 +68,7 @@ var roomStore = Reflux.createStore({
     addRoom: function () {
         var room = {
             isEditing: true,
+            isEditable: true,
             id: _.uniqueId('room_')
         };
 
@@ -106,6 +107,7 @@ var roomStore = Reflux.createStore({
         var room = this.getRoom(roomId);
         var item = {
             isEditing: true,
+            isEditable: true,
             id: _.uniqueId('item_'),
             roomId: room.id
         };

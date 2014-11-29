@@ -26,9 +26,23 @@ var Room = React.createClass({
         var itemList = ['ul', buildItemList(this.props.items), {key: 'items'}];
 
         var view = [
-            ['h3', this.props.description, {key: 'description'}],
-            itemList
+            ['h3', this.props.description, {key: 'description'}]
         ];
+
+        if (this.props.isEditable) {
+            view.push(
+                ['a', 'Edit', {
+                    key: 'edit',
+                    href: '#',
+                    onClick: this.edit
+                }],
+                ['a', 'Remove', {
+                    key: 'remove',
+                    href: '#',
+                    onClick: this.remove
+                }]
+            );
+        }
 
         var edit = [
             ['input', {
@@ -45,12 +59,15 @@ var Room = React.createClass({
             ['a', 'Cancel', {
                 key: 'remove',
                 href: '#',
-                onClick: this.remove
-            }],
-            itemList
+                onClick: this.cancelEdit
+            }]
         ];
 
-        var tree = ['div', this.state.isEditing ? edit : view];
+        var tree = ['div',
+            this.state.isEditing ? edit : view
+        ];
+
+        tree[1].push(itemList);
 
         return compile(tree);
     },
@@ -70,6 +87,22 @@ var Room = React.createClass({
         this.setState({
             isEditing: false
         });
+    },
+    edit: function () {
+        this.setState({
+            isEditing: true,
+            description: this.props.description
+        });
+    },
+    cancelEdit: function () {
+        if (!this.state.description) {
+            this.remove();
+        }
+        else {
+            this.setState({
+                isEditing: false
+            });
+        }
     },
     remove: function () {
         roomActions.removeRoom(this.props.id);
