@@ -22,9 +22,7 @@ function buildItemList(items) {
  * @type {Function}
  */
 var Room = React.createClass({
-    render: function () {
-        var itemList = ['ul', buildItemList(this.props.items), {key: 'items'}];
-
+    buildView: function () {
         var view = [
             ['h3', this.props.description, {key: 'description'}]
         ];
@@ -44,6 +42,10 @@ var Room = React.createClass({
             );
         }
 
+        view.push(this.buildItems());
+        return view;
+    },
+    buildEdit: function () {
         var edit = [
             ['input', {
                 key: 'description',
@@ -60,14 +62,19 @@ var Room = React.createClass({
                 key: 'remove',
                 href: '#',
                 onClick: this.cancelEdit
-            }]
+            }],
+            this.buildItems()
         ];
 
+        return edit;
+    },
+    buildItems: function () {
+        return ['ul', buildItemList(this.props.items), {key: 'items'}];
+    },
+    render: function () {
         var tree = ['div',
-            this.state.isEditing ? edit : view
+            this.state.isEditing ? this.buildEdit() : this.buildView()
         ];
-
-        tree[1].push(itemList);
 
         return compile(tree);
     },
