@@ -6,15 +6,11 @@ describe('roomStore', function () {
         var description = 'room description';
 
         beforeEach(function () {
-            roomStore.addRoom(description);
+            roomStore.addRoom();
         });
 
         afterEach(function () {
             roomStore.clear();
-        });
-
-        it('should add the room to the data structure with the description', function () {
-            roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description);
         });
 
         it('should be assigned a unique ID', function () {
@@ -26,11 +22,11 @@ describe('roomStore', function () {
 
             beforeEach(function () {
                 room = roomStore.rooms[0];
-                roomStore.updateRoom(room.id, description.toUpperCase());
+                roomStore.updateRoom(room.id, description);
             });
 
             it('should have updated the room description', function () {
-                roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description.toUpperCase());
+                roomStore.should.have.propertyByPath('rooms', 0, 'description').and.equal(description);
             });
 
             describe('removeRoom', function () {
@@ -50,15 +46,12 @@ describe('roomStore', function () {
 
             beforeEach(function () {
                 room = roomStore.rooms[0];
-                roomStore.addItem(room.id, description, weight, isFragile);
+                roomStore.addItem(room.id);
             });
 
             it('should have added an item to the room', function () {
-                room.should.have.propertyByPath('items', 0).and.have.properties({
-                    description: description,
-                    weight: weight,
-                    isFragile: isFragile
-                }).and.have.property('id').and.match(/item_\d+/);
+                room.should.have.propertyByPath('items', 0, 'id').and.match(/item_\d+/);
+                room.should.have.propertyByPath('items', 0, 'roomId').and.match(/room_\d+/);
             });
 
             describe('updateItem', function () {
@@ -66,14 +59,14 @@ describe('roomStore', function () {
 
                 beforeEach(function () {
                     item = room.items[0];
-                    roomStore.updateItem(room.id, item.id, description.toUpperCase(), weight.toUpperCase(), !isFragile);
+                    roomStore.updateItem(room.id, item.id, description, weight, isFragile);
                 });
 
                 it('should have updated the item', function () {
                     roomStore.should.have.propertyByPath('rooms', 0, 'items', 0).and.have.properties({
-                        description: description.toUpperCase(),
-                        weight: weight.toUpperCase(),
-                        isFragile: !isFragile
+                        description: description,
+                        weight: weight,
+                        isFragile: isFragile
                     });
                 });
 

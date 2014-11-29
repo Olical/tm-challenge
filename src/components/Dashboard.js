@@ -3,6 +3,7 @@ var React = require('react');
 var Reflux = require('reflux');
 var compile = require('../utils/compile');
 var roomStore = require('../stores/roomStore');
+var roomActions = require('../actions/roomActions');
 var Room = React.createFactory(require('./Room'));
 
 /**
@@ -24,7 +25,10 @@ var Dashboard = React.createClass({
         Reflux.connect(roomStore, 'rooms')
     ],
     render: function () {
-        var tree = ['ul', buildRoomList(this.state.rooms)];
+        var tree = ['div', [
+            ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}],
+            ['a', 'Add new room', {key: 'addRoom', href: '#', onClick: roomActions.addRoom}]
+        ]];
         return compile(tree);
     }
 });

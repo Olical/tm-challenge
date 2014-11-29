@@ -63,13 +63,11 @@ var roomStore = Reflux.createStore({
     },
 
     /**
-     * Creates a new room with a description.
-     *
-     * @param {String} description
+     * Creates a blank room in edit mode.
      */
-    addRoom: function (description) {
+    addRoom: function () {
         var room = {
-            description: description,
+            isEditing: true,
             id: _.uniqueId('room_')
         };
 
@@ -100,20 +98,16 @@ var roomStore = Reflux.createStore({
     },
 
     /**
-     * Creates a new item against a room.
+     * Creates a blank item against a room in edit mode.
      *
      * @param {String} roomId
-     * @param {String} description
-     * @param {String} weight
-     * @param {Boolean} isFragile
      */
-    addItem: function (roomId, description, weight, isFragile) {
+    addItem: function (roomId) {
         var room = this.getRoom(roomId);
         var item = {
-            description: description,
-            weight: weight,
-            isFragile: isFragile,
-            id: _.uniqueId('item_')
+            isEditing: true,
+            id: _.uniqueId('item_'),
+            roomId: room.id
         };
 
         room.items = _.union(room.items, [item]);
