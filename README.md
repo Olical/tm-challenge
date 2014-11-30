@@ -4,6 +4,8 @@ To get started, run `npm install` to fetch all dependencies and `npm start` to s
 
 You can use `gulp test` or `npm test` to lint and test the source as well as `gulp test-watch` to continually run them as files change. Below are my "workings out" and thoughts as I go along.
 
+This is my first time ever building something with React so I've learnt a lot along the way. I've wanted to use it for a long time and this seemed like a good opportunity to try it out, it may mean that I'm not following every pattern yet though.
+
 ## Key requirements
 
  * List of items
@@ -59,3 +61,11 @@ Room and item components should have an `isEditable` flag that is set to true in
  * Manifest view
  * Add CSS so it doesn't cause my eyes to explode
  * Find a way to test components that isn't dumb
+
+## Things I'd want to do next time
+
+ * Continue to develop the `compile` idea in it's own repository to turn it into a clone of the ClojureScript / Reagent / Hiccup style declarative array syntax. It does a lot right now, but it's not perfect and my code looks weird in some places because of that.
+ * Plan out the overall architecture more, I've already learned where files grow and complexity builds if left unchecked. Need to make some decisions about where the state should be held, should component local state be used in the way I'm using it? Should things like `isEditing` be global?
+ * I'd like to either invest some time in ClojureScript or maybe mix in Immutable.js (also from Facebook) to get even saner and faster data flows. Even though I love learning about Clojure(Script) I'll probably stick to JavaScript and continually improve my tooling and utilities.
+ * Have an actual visual / DOM design up front. Design is not my thing, and I've had others dedicated to the CSS for the past year. I've just focussed on the JavaScript since I was trying to learn React / Reflux at the same time, so style is an afterthought and that may show.
+ * More routing, I'm only using it to switch between the dashboard and manifest, but I now realise it's incredible and could have helped with a lot of state things.
