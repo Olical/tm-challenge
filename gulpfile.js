@@ -13,6 +13,7 @@ var paths = {
     sources: './src/**/*.js',
     tests: './test/**/*.js',
     html: './build/index.html',
+    css: './build/style.css',
     es5shim: './node_modules/es5-shim'
 };
 
@@ -44,7 +45,7 @@ gulp.task('reload', ['build'], function () {
 });
 
 gulp.task('serve', ['connect'], function () {
-    return gulp.watch([paths.html, paths.sources], ['reload']);
+    return gulp.watch([paths.html, paths.sources, paths.css], ['reload']);
 });
 
 gulp.task('lint', function () {

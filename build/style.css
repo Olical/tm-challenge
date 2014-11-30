@@ -1,0 +1,36 @@
+/* Palette: http://www.colourlovers.com/palette/3573275/marshmallow_moon */
+
+.pure-menu.menu-main {
+    background-color: #C2C7DF;
+    margin: 0;
+}
+
+.pure-menu.menu-main a {
+    color: #71727B;
+}
+
+.pure-menu.menu-main a.active {
+    color: #7685D4;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.form-room {
+    background-color: #C2C7DF;
+    margin: 1em;
+    padding: 0.5em;
+}
+
+.form-room .form-room-description {
+    background-color: #71727B;
+    color: #EEEEEE;
+    padding: 0.5em;
+    margin-top: 0;
+}
+
+
+.form-item {
+    background-color: #AEC8E4;
+    margin: 0.2em;
+    padding: 0.2em;
+}

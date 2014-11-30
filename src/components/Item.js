@@ -20,7 +20,9 @@ function humanBoolean(flag) {
  */
 var Item = React.createClass({
     render: function () {
-        var tree = ['div', this.state.isEditing ? this.buildEdit() : this.buildView()];
+        var tree = ['div', this.state.isEditing ? this.buildEdit() : this.buildView(), {
+            className: 'form-item'
+        }];
         return compile(tree);
     },
     buildProp: function (key, value) {

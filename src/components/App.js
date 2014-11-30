@@ -10,7 +10,10 @@ var App = React.createClass({
     ],
     render: function () {
         var tree = ['div', [
-            ['ul', {key: 'menu', className: 'pure-menu pure-menu-open pure-menu-horizontal'}, [
+            ['ul', {
+                key: 'menu',
+                className: 'pure-menu pure-menu-open pure-menu-horizontal menu-main'
+            }, [
                 ['li', {key: 'dashboard', className: this.getMenuClass('dashboard')}, [
                     [Link, {to: 'dashboard', key: 'link'}, 'Dashboard']
                 ]],

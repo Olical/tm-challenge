@@ -32,7 +32,10 @@ function buildItemList(items, isEditable) {
 var Room = React.createClass({
     buildView: function () {
         var view = [
-            ['h3', this.props.description, {key: 'description'}]
+            ['h3', this.props.description, {
+                key: 'description',
+                className: 'form-room-description'
+            }]
         ];
 
         if (this.props.isEditable) {
@@ -95,7 +98,9 @@ var Room = React.createClass({
         return ['div', {key: 'items'}, items];
     },
     render: function () {
-        var tree = ['div', {className: 'pure-form'},
+        var tree = ['div', {
+            className: 'pure-form form-room',
+        },
             this.state.isEditing ? this.buildEdit() : this.buildView()
         ];
 
