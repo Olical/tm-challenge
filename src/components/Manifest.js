@@ -9,10 +9,7 @@ var Manifest = React.createClass({
         Reflux.connect(roomStore, 'rooms')
     ],
     render: function () {
-        var tree = ['div', [
-            ['p', 'Below you will find a plain text representation of your rooms and items that you can simply share with your moving company.', {key: 'description'}],
-            ['div', generateManifest(this.state.rooms), {key: 'manifest'}]
-        ]];
+        var tree = ['div', generateManifest(this.state.rooms)];
         return compile(tree);
     }
 });

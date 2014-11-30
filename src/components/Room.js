@@ -17,7 +17,10 @@ function buildItemList(items, isEditable) {
     };
 
     return _.map(items, function (item) {
-        return ['li', Item(_.assign({}, editable, item)), {key: item.id}];
+        return ['div', Item(_.assign({}, editable, item)), {
+            key: item.id,
+            className: 'pure-u-1-2'
+        }];
     });
 }
 
@@ -84,7 +87,10 @@ var Room = React.createClass({
             }]);
         }
 
-        items.push(['ul', buildItemList(this.props.items, this.props.isEditable), {key: 'items'}]);
+        items.push(['div', buildItemList(this.props.items, this.props.isEditable), {
+            key: 'items',
+            className: 'pure-g'
+        }]);
 
         return ['div', {key: 'items'}, items];
     },

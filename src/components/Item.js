@@ -20,11 +20,11 @@ function humanBoolean(flag) {
  */
 var Item = React.createClass({
     render: function () {
-        var tree = ['ul', this.state.isEditing ? this.buildEdit() : this.buildView()];
+        var tree = ['div', this.state.isEditing ? this.buildEdit() : this.buildView()];
         return compile(tree);
     },
     buildProp: function (key, value) {
-        return ['li', [key, value].join(': '), {
+        return ['div', [key, value].join(': '), {
             key: key
         }];
     },
@@ -57,21 +57,25 @@ var Item = React.createClass({
             }]];
         }
 
-        return ['li', {key: placeholder}, input];
+        return ['div', {key: placeholder}, input];
     },
     buildEdit: function () {
         var edit = [
             this.buildEditableProp('Description', this.state.description, this.onDescriptionChange),
             this.buildEditableProp('Weight', this.state.weight, this.onWeightChange),
             this.buildEditableProp('Fragile?', this.state.isFragile || false, this.onFragileChange),
-            ['li', {key: 'manager'}, [
-                ['button', 'Save', {
+            ['div', {key: 'manager'}, [
+                ['a', 'Save', {
                     key: 'save',
-                    onClick: this.update
+                    onClick: this.update,
+                    href: '#',
+                    className: 'pure-button pure-button-primary'
                 }],
-                ['button', 'Cancel', {
+                ['a', 'Cancel', {
                     key: 'cancel',
-                    onClick: this.cancelEdit
+                    onClick: this.cancelEdit,
+                    href: '#',
+                    className: 'pure-button'
                 }]
             ]]
         ];
@@ -89,11 +93,15 @@ var Item = React.createClass({
             view = _.union(view, [
                 ['button', 'Edit', {
                     key: 'edit',
-                    onClick: this.edit
+                    onClick: this.edit,
+                    href: '#',
+                    className: 'pure-button'
                 }],
                 ['button', 'Remove', {
                     key: 'remove',
-                    onClick: this.remove
+                    onClick: this.remove,
+                    href: '#',
+                    className: 'pure-button'
                 }]
             ]);
         }

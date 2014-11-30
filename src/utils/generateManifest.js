@@ -91,10 +91,22 @@ function generateManifest(rooms) {
     var rest = getRest(rooms, [heavy, fragile]);
 
     return [
-        ['div', {key: 'manifest'}, [
-            ['div', renderRooms('Heaviest', heavy), {key: 'heaviest'}],
-            ['div', renderRooms('Fragile', fragile), {key: 'fragile'}],
-            ['div', renderRooms('Rest', rest), {key: 'rest'}]
+        ['ul', {
+            key: 'manifest',
+            className: 'pure-g'
+        }, [
+            ['li', renderRooms('Heaviest', heavy), {
+                key: 'heaviest',
+                className: 'pure-u-1-3'
+            }],
+            ['li', renderRooms('Fragile', fragile), {
+                key: 'fragile',
+                className: 'pure-u-1-3'
+            }],
+            ['li', renderRooms('Rest', rest), {
+                key: 'rest',
+                className: 'pure-u-1-3'
+            }]
         ]]
     ];
 }
