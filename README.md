@@ -6,6 +6,8 @@ You can use `gulp test` or `npm test` to lint and test the source as well as `gu
 
 This is my first time ever building something with React so I've learnt a lot along the way. I've wanted to use it for a long time and this seemed like a good opportunity to try it out, it may mean that I'm not following every pattern yet though.
 
+As you may be able to tell, I'm no designer right now. I focussed on learning React / Flux / Reflux and applying that to the problem domain. Any kind of CSS was an afterthought for this. Hand me a design, I can build it. Let me roam free and I'll probably make something hideous, as with many JavaScript oriented developers.
+
 ## Key requirements
 
  * List of items
@@ -59,7 +61,7 @@ Room and item components should have an `isEditable` flag that is set to true in
 
 ## To do
 
- * Find a way to test components that isn't dumb. I've put quite a lot of time into researching this, but it looks like the only good way to test actual components is to use Jest and render them in some fake, massively mocked, way. I wanted to new up the component class and prod the state, like a model, but it looks like that's impossible. You have to render the whole thing in memory and prod the DOM-ish stuff.
+ * Find a way to test components that isn't dumb. I've put quite a lot of time into researching this, but it looks like the only good way to test actual components is to use Jest and render them in some fake, massively mocked, way. I wanted to new up the component class and prod the state, like a model, but it looks like that's impossible. You have to render the whole thing in memory and prod the DOM-ish stuff. This guy has some cool thoughts on it: http://www.asbjornenge.com/wwc/testing_react_components.html
 
 ## Things I'd want to do next time
 
