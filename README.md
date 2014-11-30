@@ -69,3 +69,6 @@ Room and item components should have an `isEditable` flag that is set to true in
  * I'd like to either invest some time in ClojureScript or maybe mix in Immutable.js (also from Facebook) to get even saner and faster data flows. Even though I love learning about Clojure(Script) I'll probably stick to JavaScript and continually improve my tooling and utilities.
  * Have an actual visual / DOM design up front. Design is not my thing, and I've had others dedicated to the CSS for the past year. I've just focussed on the JavaScript since I was trying to learn React / Reflux at the same time, so style is an afterthought and that may show.
  * More routing, I'm only using it to switch between the dashboard and manifest, but I now realise it's incredible and could have helped with a lot of state things.
+ * Isomorphism is easy with React (render on the server for instant load and noscript support), this also leads onto progressive enhancement.
+ * More generic components. The smaller and more numerous the better.
+ * Some kind of standard outline of how to build and scale this sort of thing, I'm winging it as I go because I'm still learning how to build with these tools, but some rules would be nice. I'm amazed at how quickly it can be picked up and used though.
