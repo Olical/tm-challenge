@@ -112,9 +112,6 @@ var Item = React.createClass({
     },
     getInitialState: function () {
         return {
-            description: this.props.description,
-            weight: this.props.weight,
-            isFragile: this.props.isFragile,
             isEditing: this.props.isEditable && _.some([
                 this.props.description,
                 this.props.weight
