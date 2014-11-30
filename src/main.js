@@ -13,8 +13,8 @@ var App = require('./components/App');
 var container = document.getElementById('main');
 
 var routes = compile(
-    Route({path: '/', handler: App, name: 'dashboard'},
-        DefaultRoute({handler: Dashboard}),
+    Route({path: '/', handler: App},
+        DefaultRoute({name: 'dashboard', handler: Dashboard}),
         Route({name: 'manifest', handler: Manifest})
     )
 );
