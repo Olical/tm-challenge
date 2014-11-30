@@ -30,15 +30,18 @@ var Dashboard = React.createClass({
     ],
     render: function () {
         var tree = ['div', [
-            ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}],
-            ['button', 'Add new room', {
-                key: 'addRoom',
-                onClick: roomActions.addRoom
-            }],
-            ['button', 'Clear all', {
-                key: 'clear',
-                onClick: roomActions.clear
-            }]
+            ['ul', {className: 'pure-menu pure-menu-open pure-menu-horizontal'}, [
+                ['li', [['a', 'Add new room', {
+                    key: 'addRoom',
+                    onClick: roomActions.addRoom
+                }]]],
+                ['li', [['a', 'Clear all', {
+                        key: 'clear',
+                        onClick: roomActions.clear
+                    }]]
+                ]
+            ]],
+            ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}]
         ]];
         return compile(tree);
     }
