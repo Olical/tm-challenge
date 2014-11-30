@@ -59,7 +59,7 @@ Room and item components should have an `isEditable` flag that is set to true in
 
 ## To do
 
- * Find a way to test components that isn't dumb
+ * Find a way to test components that isn't dumb. I've put quite a lot of time into researching this, but it looks like the only good way to test actual components is to use Jest and render them in some fake, massively mocked, way. I wanted to new up the component class and prod the state, like a model, but it looks like that's impossible. You have to render the whole thing in memory and prod the DOM-ish stuff.
 
 ## Things I'd want to do next time
 
