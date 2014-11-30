@@ -73,7 +73,9 @@ function renderRooms(title, rooms) {
     var base = [['h2', title, {key: 'title'}]];
 
     var content = _.map(rooms, function (room) {
-        return Room(_.assign({key: room.id}, room));
+        if (room.items && room.items.length > 0) {
+            return Room(_.assign({key: room.id}, room));
+        }
     });
 
     return _.union(base, content);
