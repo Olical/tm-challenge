@@ -15,7 +15,10 @@ function buildRoomList(rooms) {
     };
 
     return _.map(rooms, function (room) {
-        return ['li', Room(_.assign({}, editable, room)), {key: room.id}];
+        return ['li', Room(_.assign({}, editable, room)), {
+            key: room.id,
+            className: 'pure-u-1-5'
+        }];
     });
 }
 
@@ -33,15 +36,20 @@ var Dashboard = React.createClass({
             ['ul', {className: 'pure-menu pure-menu-open pure-menu-horizontal'}, [
                 ['li', [['a', 'Add new room', {
                     key: 'addRoom',
-                    onClick: roomActions.addRoom
+                    onClick: roomActions.addRoom,
+                    href: '#'
                 }]]],
                 ['li', [['a', 'Clear all', {
                         key: 'clear',
-                        onClick: roomActions.clear
+                        onClick: roomActions.clear,
+                        href: '#'
                     }]]
                 ]
             ]],
-            ['ul', buildRoomList(this.state.rooms), {key: 'rooms'}]
+            ['ul', buildRoomList(this.state.rooms), {
+                key: 'rooms',
+                className: 'pure-g'
+            }]
         ]];
         return compile(tree);
     }

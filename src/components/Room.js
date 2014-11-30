@@ -36,11 +36,13 @@ var Room = React.createClass({
             view.push(
                 ['button', 'Edit', {
                     key: 'edit',
-                    onClick: this.edit
+                    onClick: this.edit,
+                    className: 'pure-button'
                 }],
                 ['button', 'Remove', {
                     key: 'remove',
-                    onClick: this.remove
+                    onClick: this.remove,
+                    className: 'pure-button'
                 }]
             );
         }
@@ -58,11 +60,13 @@ var Room = React.createClass({
             }],
             ['button', 'Save', {
                 key: 'update',
-                onClick: this.update
+                onClick: this.update,
+                className: 'pure-button'
             }],
             ['button', 'Cancel', {
                 key: 'remove',
-                onClick: this.cancelEdit
+                onClick: this.cancelEdit,
+                className: 'pure-button'
             }],
             this.buildItems()
         ];
@@ -70,21 +74,22 @@ var Room = React.createClass({
         return edit;
     },
     buildItems: function () {
-        var items = [
-            ['ul', buildItemList(this.props.items, this.props.isEditable), {key: 'items'}]
-        ];
+        var items = [];
 
         if (this.props.isEditable) {
-            items.push(['button', 'Add item', {
+            items.push(['button', 'Add new item', {
                 key: 'addItem',
-                onClick: roomActions.addItem.bind(null, this.props.id)
+                onClick: roomActions.addItem.bind(null, this.props.id),
+                className: 'pure-button pure-button-primary'
             }]);
         }
+
+        items.push(['ul', buildItemList(this.props.items, this.props.isEditable), {key: 'items'}]);
 
         return ['div', {key: 'items'}, items];
     },
     render: function () {
-        var tree = ['div',
+        var tree = ['div', {className: 'pure-form'},
             this.state.isEditing ? this.buildEdit() : this.buildView()
         ];
 
