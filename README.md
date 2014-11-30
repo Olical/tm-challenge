@@ -74,3 +74,4 @@ Room and item components should have an `isEditable` flag that is set to true in
  * More generic components. The smaller and more numerous the better.
  * Some kind of standard outline of how to build and scale this sort of thing, I'm winging it as I go because I'm still learning how to build with these tools, but some rules would be nice. I'm amazed at how quickly it can be picked up and used though.
  * Use jsPDF to render the manifest as a PDF and maybe PDF.js to preview it before download. Had to use CSV + plain text as a quick alternative.
+ * More tests, I can do better than that. I can test all of the components by instantiating the classes. I originally shied away from it because I thought I'd end up testing the DOM of the components, I think I can around it and test the state manipulating functions now though.
