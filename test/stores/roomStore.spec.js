@@ -1,16 +1,72 @@
+var sinon = require('sinon');
 var roomStore = require('../../src/stores/roomStore');
+var persistence = require('../../src/utils/persistence');
 var Reflux = require('reflux');
 
 describe('roomStore', function () {
+    afterEach(function () {
+        roomStore.clear();
+    });
+
+    describe('clear', function () {
+        it('should set the storage to an empty array', function () {
+            roomStore.rooms = {fail:true};
+            roomStore.clear();
+            roomStore.rooms.should.be.instanceOf(Array);
+            roomStore.rooms.length.should.equal(0);
+        });
+    });
+
+    describe('set', function () {
+        var persistenceWriteSpy;
+
+        beforeEach(function () {
+            persistenceWriteSpy = sinon.spy(persistence, 'write');
+        });
+
+        afterEach(function () {
+            roomStore.clear();
+            persistenceWriteSpy.restore();
+        });
+
+        it('should allow me to set values', function () {
+            roomStore.set(['test']);
+            roomStore.rooms[0].should.equal('test');
+        });
+
+        it('should try to write to persistence', function () {
+            roomStore.set(['test']);
+            sinon.assert.calledOnce(persistenceWriteSpy);
+        });
+    });
+
+    describe('getInitialState', function () {
+        it('should be an empty array', function () {
+            roomStore.getInitialState().should.eql([]);
+        });
+
+        describe('with storage set', function () {
+            var stored = [{id:'foo'}];
+
+            beforeEach(function () {
+                sinon.stub(persistence, 'read').returns(stored);
+            });
+
+            afterEach(function () {
+                persistence.read.restore();
+            });
+
+            it('should return the stored item', function () {
+                roomStore.getInitialState().should.eql(stored);
+            });
+        });
+    });
+
     describe('addRoom', function () {
         var description = 'room description';
 
         beforeEach(function () {
             roomStore.addRoom();
-        });
-
-        afterEach(function () {
-            roomStore.clear();
         });
 
         it('should be assigned a unique ID', function () {

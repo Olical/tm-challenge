@@ -26,7 +26,8 @@
     "gulp-mocha": "^2.0.0",
     "gulp-uglify": "^1.0.1",
     "jshint-stylish": "^1.0.0",
-    "should": "^4.3.0"
+    "should": "^4.3.0",
+    "sinon": "^1.12.1"
   },
   "dependencies": {
     "es5-shim": "^4.0.3",
