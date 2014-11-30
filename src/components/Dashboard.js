@@ -33,7 +33,10 @@ var Dashboard = React.createClass({
     ],
     render: function () {
         var tree = ['div', [
-            ['ul', {className: 'pure-menu pure-menu-open pure-menu-horizontal'}, [
+            ['ul', {
+                key: 'controls',
+                className: 'pure-menu pure-menu-open pure-menu-horizontal'
+            }, [
                 ['li', {key: 'add'}, [['a', 'Add new room', {
                     key: 'button',
                     onClick: roomActions.addRoom,
