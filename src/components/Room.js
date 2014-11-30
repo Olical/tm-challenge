@@ -8,11 +8,12 @@ var Item = React.createFactory(require('./Item'));
  * Constructs a list of items. Each item is also a list. We have to go deeper.
  *
  * @param {Object[]} items
+ * @param {Boolean} isEditable
  * @return {*[]}
  */
-function buildItemList(items) {
+function buildItemList(items, isEditable) {
     var editable = {
-        isEditable: true
+        isEditable: isEditable
     };
 
     return _.map(items, function (item) {
@@ -70,7 +71,7 @@ var Room = React.createClass({
     },
     buildItems: function () {
         var items = [
-            ['ul', buildItemList(this.props.items), {key: 'items'}]
+            ['ul', buildItemList(this.props.items, this.props.isEditable), {key: 'items'}]
         ];
 
         if (this.props.isEditable) {

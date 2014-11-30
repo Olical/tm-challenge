@@ -35,6 +35,7 @@ This is my first time ever building something with React so I've learnt a lot al
 ## Ideas on how to implement key points
 
  * Manifest view can encode the data in the URL or a hunk you can copy / paste back in. So it can be shared with anyone. Everything else is stored in your browser.
+ * Another approach for manifest: Allow exporting the data structure as a CSV or plain text, maybe both. I'm going to take this approach I think. It's by far the most practical, the user could be savvy with NPM and running this locally, who knows! They can't give a link to the moving company, they'll be able to email them though. The manifest view should simply generate portable formats (plain text / CSV).
 
 ## Reflux structure
 
@@ -72,3 +73,4 @@ Room and item components should have an `isEditable` flag that is set to true in
  * Isomorphism is easy with React (render on the server for instant load and noscript support), this also leads onto progressive enhancement.
  * More generic components. The smaller and more numerous the better.
  * Some kind of standard outline of how to build and scale this sort of thing, I'm winging it as I go because I'm still learning how to build with these tools, but some rules would be nice. I'm amazed at how quickly it can be picked up and used though.
+ * Use jsPDF to render the manifest as a PDF and maybe PDF.js to preview it before download. Had to use CSV + plain text as a quick alternative.
